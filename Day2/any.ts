@@ -3,7 +3,7 @@ result='hello';
 console.log(result);
 result=1;
 console.log(result);
-result=[1,2,3];
+result=[1,2,3,4];
 let k=result.reduce((a:number,b:number)=>a+b,0);
 console.log(k);
 
