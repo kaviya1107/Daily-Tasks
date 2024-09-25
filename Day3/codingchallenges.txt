@@ -1,0 +1,52 @@
+/*Input a string of alphabets.
+Find out the number of occurrence of all alphabets in that string. 
+Find out the alphabet with maximum occurrence.*/
+
+function occurrences(input: string) {
+    const count = {};
+    let maxCount = 0;
+    for (const char of input) {
+        count[char] = (count[char] || 0) + 1;
+        maxCount = Math.max(maxCount, count[char]); 
+    }
+    return { count, maxCount };
+}
+console.log(occurrences("hello"));
+Input:hello
+Output:{ count: { h: 1, e: 1, l: 2, o: 1 }, maxCount: 2 }
+
+/*Input a string which contains some palindrome substrings. 
+Find out the position of palindrome substrings if exist and replace it by *. 
+(For example if input string is “bob has a radar plane” then it should convert in “*** has a ***** plane”.*/
+
+function isPalindrome(wor: string): any {
+    if (wor.length <= 1) {
+        return false;
+    }
+    let rev = ""; 
+    for (let i = wor.length - 1; i >= 0; i--) {
+        rev=rev+wor[i];
+    }
+    return rev === wor; 
+}
+function replacePalindromes(sentence: string): string {
+    const words = sentence.split(" ");
+    const result:any= []; 
+    for (const word of words) {
+        if (isPalindrome(word)) {
+            let asterisks = ""; 
+            for (let i = 0; i < word.length; i++) {
+                asterisks= asterisks+"*"; 
+            }
+            result.push(asterisks);
+        } else {
+            result.push(word); 
+        }
+    }
+    return result.join(" "); 
+}
+console.log(replacePalindromes("bob has a radar plane"));
+
+Input:bob has a radar plane
+Output:*** has a ***** plane
+
